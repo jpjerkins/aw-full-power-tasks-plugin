@@ -1,0 +1,12 @@
+{
+    "created": "20240430024410116",
+    "title": "$:/plugins/pjerkins/aw-full-power-tasks",
+    "modified": "20240430024410116",
+    "core.version": ">=5.3.3",
+    "description": "ArchWork Full-Power Tasks plugin",
+    "plugin-type": "plugin",
+    "version": "0.0.06",
+    "name": "aw-full-power-tasks",
+    "dependents": "[[$:/plugins/pjerkins/aw-full-power-tasks]]",
+    "list": "readme"
+}

@@ -1,0 +1,26 @@
+created: 20240430024410116
+creator: jpjerkins
+modified: 20240430024410116
+creator: jpjerkins
+tags: template $:/tags/ViewTemplate
+title: $:/plugins/pjerkins/aw-full-power-tasks/ViewTemplates/TaskChildTasksFooter
+list-after: $:/plugins/pjerkins/aw-nested-tasks/ViewTemplates/TaskChildTasksFooter
+
+<% if [is[current]tag[Task]] %>
+    
+    <$list filter=`[tag<currentTiddler>tag[Task]tag[FollowUpItem]first[]]` variable="_">
+
+        <h2>Follow-up Tasks</h2>
+        
+        <$set name="sortList" filter="[list<currentTiddler>]" >
+            <$list filter=`[tag<currentTiddler>tag[Task]tag[FollowUpItem]]`>
+                {{||$:/plugins/pjerkins/aw-basic-tasks/ViewTemplates/TaskActionBar3Dot}}
+                <$link />
+                {{||$:/plugins/pjerkins/aw-basic-tasks/ViewTemplates/TaskActionBar}}
+                <br/>
+            </$list>
+        </$set>
+
+    </$list>
+
+<% endif %>
