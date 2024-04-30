@@ -8,12 +8,27 @@ list-after: $:/plugins/pjerkins/aw-nested-tasks/ViewTemplates/TaskChildTasksFoot
 
 <% if [is[current]tag[Task]] %>
     
-    <$list filter=`[tag<currentTiddler>tag[Task]tag[FollowUpItem]first[]]` variable="_">
+    <$list filter=`[tag<currentTiddler>tag[Task]!tag[Done]tag[FollowUpItem]first[]]` variable="_">
 
         <h2>Follow-up Tasks</h2>
         
         <$set name="sortList" filter="[list<currentTiddler>]" >
-            <$list filter=`[tag<currentTiddler>tag[Task]tag[FollowUpItem]]`>
+            <$list filter=`[tag<currentTiddler>tag[Task]!tag[Done]tag[FollowUpItem]]`>
+                {{||$:/plugins/pjerkins/aw-basic-tasks/ViewTemplates/TaskActionBar3Dot}}
+                <$link />
+                {{||$:/plugins/pjerkins/aw-basic-tasks/ViewTemplates/TaskActionBar}}
+                <br/>
+            </$list>
+        </$set>
+
+    </$list>
+    
+    <$list filter=`[tag<currentTiddler>tag[Task]!tag[Done]tag[Parked]first[]]` variable="_">
+
+        <h2>Parked Tasks</h2>
+        
+        <$set name="sortList" filter="[list<currentTiddler>]" >
+            <$list filter=`[tag<currentTiddler>tag[Task]!tag[Done]tag[Parked]]`>
                 {{||$:/plugins/pjerkins/aw-basic-tasks/ViewTemplates/TaskActionBar3Dot}}
                 <$link />
                 {{||$:/plugins/pjerkins/aw-basic-tasks/ViewTemplates/TaskActionBar}}
