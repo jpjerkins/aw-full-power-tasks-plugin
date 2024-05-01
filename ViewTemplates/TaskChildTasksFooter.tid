@@ -17,6 +17,9 @@ list-after: $:/plugins/pjerkins/aw-nested-tasks/ViewTemplates/TaskChildTasksFoot
                 {{||$:/plugins/pjerkins/aw-basic-tasks/ViewTemplates/TaskActionBar3Dot}}
                 <$link />
                 {{||$:/plugins/pjerkins/aw-basic-tasks/ViewTemplates/TaskActionBar}}
+                <span style="color: gray;">
+                    <i>({{!!follow-up-folder}})</i>
+                </span>
                 <br/>
             </$list>
         </$set>
