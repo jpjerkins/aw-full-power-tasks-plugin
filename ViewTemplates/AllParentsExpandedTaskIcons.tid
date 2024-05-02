@@ -1,0 +1,29 @@
+created: 20240502014431495
+modified: 20240502015910970
+tags: AllParentsExpandedTaskIcon
+title: $:/plugins/pjerkins/aw-full-power-tasks/ViewTemplates/AllParentsExpandedTaskIcons
+type: text/vnd.tiddlywiki
+
+<% if [tag<currentTiddler>tag[Task]tag[Today]] =[tag<currentTiddler>tag[Task]tag[TodayCandidate]] %>
+<$vars todayCount={{{ [tag<currentTiddler>tag[Task]tag[Today]] =[tag<currentTiddler>tag[Task]tag[TodayCandidate]] +[count[]] }}} >
+@@background-color:#C60;color:white;border-radius:0.5em;padding-left:0.3em;padding-right:0.3em;T <<todayCount>>@@
+</$vars>
+<% endif %>
+
+<% if [tag<currentTiddler>tag[Task]tag[Parked]] %>
+<$vars parkedCount={{{ [tag<currentTiddler>tag[Task]tag[Parked]] +[count[]] }}} >
+@@background-color:#888;color:white;border-radius:0.5em;padding-left:0.3em;padding-right:0.3em;P <<parkedCount>>@@
+</$vars>
+<% endif %>
+
+<% if [tag<currentTiddler>tag[Task]tag[FollowUpItem]] %>
+<$vars followupCount={{{ [tag<currentTiddler>tag[Task]tag[FollowUpItem]] +[count[]] }}} >
+@@background-color:green;color:white;border-radius:0.5em;padding-left:0.3em;padding-right:0.3em;F <<followupCount>>@@
+</$vars>
+<% endif %>
+
+<% if [tag<currentTiddler>tag[Task]tag[Blocker]] %>
+<$vars blockerCount={{{ [tag<currentTiddler>tag[Task]tag[Blocker]] +[count[]] }}} >
+@@background-color:#B00;color:white;border-radius:0.5em;padding-left:0.3em;padding-right:0.3em;B <<blockerCount>>@@
+</$vars>
+<% endif %>
