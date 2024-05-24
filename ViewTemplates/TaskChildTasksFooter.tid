@@ -6,6 +6,8 @@ tags: template $:/tags/ViewTemplate
 title: $:/plugins/pjerkins/aw-full-power-tasks/ViewTemplates/TaskChildTasksFooter
 list-after: $:/plugins/pjerkins/aw-nested-tasks/ViewTemplates/TaskChildTasksFooter
 
+\import [[$:/plugins/pjerkins/aw-ui-controls/Macros/ActionBarMacros]]
+
 <% if [is[current]tag[Task]] %>
     
     <$list filter=`[tag<currentTiddler>tag[Task]!tag[Done]tag[FollowUpItem]first[]]` variable="_">
@@ -25,6 +27,25 @@ list-after: $:/plugins/pjerkins/aw-nested-tasks/ViewTemplates/TaskChildTasksFoot
         </$set>
 
     </$list>
+
+<% if [tag<currentTiddler>tag[Meetings]] %>
+
+<h2>Meetings</h2>
+
+<$vars todayDate=<<now YYYY-0MM-0DD>> meetingDateSort="[split[]last[10]join[]]" meetingDateFilter="[split[]last[10]join[]compare:string:gteq<todayDate>]" >
+<$list filter="[tag<currentTiddler>tag[Meetings]!filter<meetingDateFilter>sortsub:string<meetingDateSort>]">
+<$link />
+<br/>
+</$list>
+<$list filter="[tag<currentTiddler>tag[Meetings]filter<meetingDateFilter>sortsub:string<meetingDateSort>]">
+<<threeDotMenu>>
+<$link />
+<<actionBar "MeetingActionBarControl">>
+<br/>
+</$list>
+</$vars>
+
+<% endif %>
     
     <$list filter=`[tag<currentTiddler>tag[Task]!tag[Done]tag[Parked]first[]]` variable="_">
 

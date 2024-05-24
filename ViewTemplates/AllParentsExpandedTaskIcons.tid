@@ -6,7 +6,7 @@ type: text/vnd.tiddlywiki
 
 <% if [tag<currentTiddler>tag[Task]!tag[Done]tag[Today]] =[tag<currentTiddler>tag[Task]!tag[Done]tag[TodayCandidate]] %>
 <$vars todayCount={{{ [tag<currentTiddler>tag[Task]!tag[Done]tag[Today]] =[tag<currentTiddler>tag[Task]!tag[Done]tag[TodayCandidate]] +[count[]] }}} >
-@@background-color:#C60;color:white;border-radius:0.5em;padding-left:0.3em;padding-right:0.3em;T <<todayCount>>@@
+@@background-color:lightgreen;color:black;border-radius:0.5em;padding-left:0.3em;padding-right:0.3em;T <<todayCount>>@@
 </$vars>
 <% endif %>
 
@@ -27,3 +27,11 @@ type: text/vnd.tiddlywiki
 @@background-color:#B00;color:white;border-radius:0.5em;padding-left:0.3em;padding-right:0.3em;B <<blockerCount>>@@
 </$vars>
 <% endif %>
+
+<$vars todayDate=<<now YYYY-0MM-0DD>> meetingDateFilter="[split[]last[10]join[]compare:string:gteq<todayDate>]" >
+<% if [tag<currentTiddler>tag[Meetings]filter<meetingDateFilter>] %>
+<$vars meetingCount={{{ [tag<currentTiddler>tag[Meetings]filter<meetingDateFilter>] +[count[]] }}} >
+@@background-color:green;color:white;border-radius:0.5em;padding-left:0.3em;padding-right:0.3em;M <<meetingCount>>@@
+</$vars>
+<% endif %>
+</$vars>
