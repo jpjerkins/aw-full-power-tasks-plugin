@@ -10,7 +10,7 @@ list-after: $:/plugins/pjerkins/aw-nested-tasks/ViewTemplates/TaskChildTasksFoot
 
 <% if [is[current]tag[Task]] %>
     
-    <$list filter=`[tag<currentTiddler>tag[Task]!tag[Done]tag[FollowUpItem]first[]]` variable="_">
+    <% if [tag<currentTiddler>tag[Task]!tag[Done]tag[FollowUpItem]first[]] %>
 
         <h2>Follow-up Tasks</h2>
         
@@ -26,26 +26,26 @@ list-after: $:/plugins/pjerkins/aw-nested-tasks/ViewTemplates/TaskChildTasksFoot
             </$list>
         </$set>
 
-    </$list>
+    <% endif %>
 
-<% if [tag<currentTiddler>tag[Meetings]] %>
+    <% if [tag<currentTiddler>tag[Meetings]] %>
 
-<h2>Meetings</h2>
+        <h2>Meetings</h2>
 
-<$vars todayDate=<<now YYYY-0MM-0DD>> meetingDateSort="[split[]last[10]join[]]" meetingDateFilter="[split[]last[10]join[]compare:string:gteq<todayDate>]" >
-<$list filter="[tag<currentTiddler>tag[Meetings]!filter<meetingDateFilter>sortsub:string<meetingDateSort>]">
-<$link />
-<br/>
-</$list>
-<$list filter="[tag<currentTiddler>tag[Meetings]filter<meetingDateFilter>sortsub:string<meetingDateSort>]">
-<<threeDotMenu>>
-<$link />
-<<actionBar "MeetingActionBarControl">>
-<br/>
-</$list>
-</$vars>
+        <$vars todayDate=<<now YYYY-0MM-0DD>> meetingDateSort="[split[]last[10]join[]]" meetingDateFilter="[split[]last[10]join[]compare:string:gteq<todayDate>]" >
+            <$list filter="[tag<currentTiddler>tag[Meetings]!filter<meetingDateFilter>sortsub:string<meetingDateSort>]">
+                <$link />
+                <br/>
+            </$list>
+            <$list filter="[tag<currentTiddler>tag[Meetings]filter<meetingDateFilter>sortsub:string<meetingDateSort>]">
+                <<threeDotMenu>>
+                <$link />
+                <<actionBar "MeetingActionBarControl">>
+                <br/>
+            </$list>
+        </$vars>
 
-<% endif %>
+    <% endif %>
     
     <$list filter=`[tag<currentTiddler>tag[Task]!tag[Done]tag[Parked]first[]]` variable="_">
 
