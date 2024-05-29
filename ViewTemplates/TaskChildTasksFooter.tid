@@ -15,15 +15,7 @@ list-after: $:/plugins/pjerkins/aw-nested-tasks/ViewTemplates/TaskChildTasksFoot
         <h2>Follow-up Tasks</h2>
         
         <$set name="sortList" filter="[list<currentTiddler>]" >
-            <$list filter=`[tag<currentTiddler>tag[Task]!tag[Done]tag[FollowUpItem]]`>
-                {{||$:/plugins/pjerkins/aw-basic-tasks/ViewTemplates/TaskActionBar3Dot}}
-                <$link />
-                {{||$:/plugins/pjerkins/aw-basic-tasks/ViewTemplates/TaskActionBar}}
-                <span style="color: gray;">
-                    <i>({{!!follow-up-folder}})</i>
-                </span>
-                <br/>
-            </$list>
+            <$list filter=`[tag<currentTiddler>tag[Task]!tag[Done]tag[FollowUpItem]]` template="$:/plugins/pjerkins/aw-followup-tasks/ViewTemplates/FollowUpTaskTemplate" />
         </$set>
 
     <% endif %>
